@@ -5,9 +5,31 @@
   <script src="js/scripts.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Pig Dice Game</title>
 </head>
 <body>
-  
+  <h1>Pig Dice Game</h1>
+  <form id="new-player-1">
+    <label for="player-name-1">Enter Player 1 Name:</label>
+    <input type="text" id="player-1-name" required/>
+    <button type="submit">Add Player 1</button>
+  </form>
+  <form id="new-player-2">
+    <label for="player-name-2">Enter Player 2 Name:</label>
+    <input type="text" id="player-2-name" required/>
+    <button type="submit">Add Player 2</button>
+  </form>
+  <div id="player-1-score">
+    <h2>Player 1</h2>
+    <p>Current Score: <span id="player1-current"></span></p>
+    <p>Total Score: <span id="player1-total"></span></p>
+  </div>
+  <div id="player-2-score">
+    <h2>Player 2</h2>
+    <p>Current Score: <span id="player2-current"></span></p>
+    <p>Total Score: <span id="player2-total"></span></p>
+  </div>
+  <button id="roll-button">Roll Dice</button>
+  <button id="hold-button">Hold</button>
 </body>
 </html>

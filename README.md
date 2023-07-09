@@ -10,6 +10,11 @@ Test: "It should add an inputted player to the PigDiceGame"
 Code: const diceGame = new PigDiceGame(); > const player = new Players("Mac", "33"); > diceGame.addplayer(player); > console.log(PigDiceGame);
 Expected Output: 
 
+Description: rollDice();
+
+Test: "It should return a random number between 1 and 6"
+Code: rollDice(1);
+Expected Output: a number between 1 and 6
 
 
 <!-- Description: DestinationsList()

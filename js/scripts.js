@@ -52,3 +52,14 @@ Players.prototype.hold = function() {
   this.totalScore += this.currentScore;
   this.currentScore = 0;
 };
+
+// UI logic
+window.addEventListener("load", function() {
+  const form1 = document.querySelector("form#new-player-1");
+  form1.addEventListener("submit", handleFormSubmission);
+
+  const form2 = document.querySelector("form#new-player-2");
+  form2.addEventListener("submit", handleFormSubmission);
+
+  const rollBtn = document.getElementById("")
+})
