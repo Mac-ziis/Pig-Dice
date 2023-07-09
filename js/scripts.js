@@ -2,7 +2,7 @@
 function PigDiceGame() {
   this.players = {};
   this.currentPlayerId = 0;
-  // this.isGameOver = false;
+  this.isGameOver = false;
 }
 
 PigDiceGame.prototype.addPlayer = function(player) {
@@ -61,5 +61,38 @@ window.addEventListener("load", function() {
   const form2 = document.querySelector("form#new-player-2");
   form2.addEventListener("submit", handleFormSubmission);
 
-  const rollBtn = document.getElementById("")
-})
+  const rollBtn = document.getElementById("roll-btn");
+  rollBtn.addEventListener("click", handleRollButtonClick);
+
+  const holdBtn = document.getElementById("hold-btn");
+  holdBtn.addEventListener("click", handleHoldButtonClick);
+});
+
+const game = new PigDiceGame();
+
+function handleFormSubmission(event) {
+  event.preventDefault();
+  const playerName = event.target.querySelector("input").value;
+  const diceValue = new Players(playerName); // could be Player 
+  game.addPlayer(newPlayer);
+  updateUI();
+  event.target.reset();
+}
+
+function handleRollButtonClick() {
+  if (game.isGameOver) {
+    showMessage("Game is over! Please start a new game.");
+    return;
+  } 
+
+  const currentPlayer = game.players[game.currentPlayerId];
+  const diceValue = currentPlayer.rollDice();
+
+  if (diceValue === 1) {
+    showMessage(`${currentPlayer.name} rolled a 1. Turn ends.`);
+  } else {
+    showMessage(`${currentPlayer.name} rolled a ${diceValue}. Current score: ${currentPlayer.currentscore}`);
+  }
+
+  
+}
