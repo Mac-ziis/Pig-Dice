@@ -5,17 +5,17 @@ function PigDiceGame() {
   this.isGameOver = false;
 }
 
-PigDiceGame.prototype.addPlayer = function(player) {
+PigDiceGame.prototype.addPlayer = function (player) {
   player.id = this.assignPlayerId();
   this.players[player.id] = player;
 };
 
-PigDiceGame.prototype.assignPlayerId = function() {
+PigDiceGame.prototype.assignPlayerId = function () {
   this.currentPlayerId += 1;
   return this.currentPlayerId;
 };
 
-PigDiceGame.prototype.switchTurn = function() {
+PigDiceGame.prototype.switchTurn = function () {
   const playerIds = Object.keys(this.players);
   const currentPlayerIndex = playerIds.indexOf(this.currentPlayerId.toString());
 
@@ -25,7 +25,7 @@ PigDiceGame.prototype.switchTurn = function() {
   }
 };
 
-PigDiceGame.prototype.checkWinCondition = function() {
+PigDiceGame.prototype.checkWinCondition = function () {
   const player = this.players[this.currentPlayerId];
   return this.player.totalScore >= 100;
 };
@@ -38,23 +38,23 @@ function Players(name, age) {
   this.currentScore = 0;
 }
 
-Players.prototype.rollDice = function() {
-  const diceValue = Math.floor(Math.random() * 6) +1;
+Players.prototype.rollDice = function () {
+  const diceValue = Math.floor(Math.random() * 6) + 1;
   if (diceValue === 1) {
     this.currentScore = 0;
   } else {
     this.currentScore += diceValue;
-  } 
+  }
   return diceValue;
 };
 
-Players.prototype.hold = function() {
+Players.prototype.hold = function () {
   this.totalScore += this.currentScore;
   this.currentScore = 0;
 };
 
 // UI logic
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
   const form1 = document.querySelector("form#new-player-1");
   form1.addEventListener("submit", handleFormSubmission);
 
@@ -83,7 +83,7 @@ function handleRollButtonClick() {
   if (game.isGameOver) {
     showMessage("Game is over! Please start a new game.");
     return;
-  } 
+  }
 
   const currentPlayer = game.players[game.currentPlayerId];
   const diceValue = currentPlayer.rollDice();
@@ -94,5 +94,36 @@ function handleRollButtonClick() {
     showMessage(`${currentPlayer.name} rolled a ${diceValue}. Current score: ${currentPlayer.currentscore}`);
   }
 
-  
+  if (game.checkWinCondition()) {
+    showMessage(`${currentPlayer.name} wins with a total score of ${currentPlayer.totalScore}!`);
+    game.gameIsOver = true;
+  }
+
+  updateUI();
+}
+
+function handleHoldButtonClick() {
+  if (game.gameIsOver) {
+    showMessage("Game over! Please start a new game.");
+    return;
+  }
+
+  const currentPlayer = game.players[game.currentPlayerId];
+  currentPlayer.hold();
+
+  f(game.checkWinCondition()) {
+    showMessage(`${currentPlayer.name} wins with a total score of ${currentPlayer.totalScore}!`);
+    game.gameIsOver = true;
+  } else {
+    game.switchTurn();
+  }
+
+  updateUI();
+}
+
+function updateUI() {
+  player1CurrentScore =
+  player1TotalScore =
+  player2CurrentScore =
+  player2TotalScore = 
 }

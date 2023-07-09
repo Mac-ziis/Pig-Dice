@@ -8,7 +8,7 @@ Description: PigDiceGame()
 
 Test: "It should add an inputted player to the PigDiceGame"
 Code: const diceGame = new PigDiceGame(); > const player = new Players("Mac", "33"); > diceGame.addplayer(player); > console.log(PigDiceGame);
-Expected Output: 
+Expected Output: Object {name: "Mac", age: "33", totalScore: 0, currentScore: 0};
 
 Description: rollDice();
 
